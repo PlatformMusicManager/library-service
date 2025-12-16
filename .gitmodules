@@ -1,0 +1,12 @@
+[submodule "libs/database-lib"]
+	path = libs/database-lib
+	url = git@github.com:PlatformMusicManager/database-lib.git
+[submodule "libs/utils-lib"]
+	path = libs/utils-lib
+	url = git@github.com:PlatformMusicManager/utils-lib
+[submodule "libs/cache-lib"]
+	path = libs/cache-lib
+	url = git@github.com:PlatformMusicManager/cache-lib.git
+[submodule "libs/domain-lib"]
+	path = libs/domain-lib
+	url = git@github.com:PlatformMusicManager/domain-lib.git
