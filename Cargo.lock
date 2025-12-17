@@ -645,6 +645,7 @@ dependencies = [
  "domain",
  "redis",
  "serde_json",
+ "tokio",
  "uuid",
 ]
 
@@ -3480,9 +3481,11 @@ dependencies = [
  "axum",
  "cache-lib",
  "chrono",
+ "database-lib",
  "domain",
  "jsonwebtoken",
  "serde",
+ "tokio",
  "tower",
  "uuid",
 ]
