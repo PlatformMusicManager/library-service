@@ -77,7 +77,7 @@ pub async fn add_track(
 
 pub async fn remove_track(
     State(state): State<AppState>,
-    Extension(_user): Extension<UserWithPlaylists>,
+    Extension(user): Extension<UserWithPlaylists>,
     Path(id): Path<i64>,
 ) -> Result<StatusCode, StatusCode> {
     // We cannot easily check ownership here without querying DB for "which playlist does this track belong to?"
@@ -95,7 +95,7 @@ pub async fn remove_track(
 
     state
         .database
-        .remove_track_from_playlist(id)
+        .remove_track_from_playlist(id, user.id)
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 

@@ -40,6 +40,10 @@ async fn main() {
     let access_token_ttl_s: i64 = parse_env("ACCESS_TOKEN_TTL");
     let refresh_token_ttl_s: i64 = parse_env("REFRESH_TOKEN_TTL");
 
+    let database_url: String = env::var("DATABASE_URL").unwrap();
+
+    let database = PostgresDb::new(database_url, Duration::new(0, 0).unwrap()).await;
+
     let redis_client = RedisClient::new(
         redis_url,
         session_cache_ttl,
@@ -49,6 +53,7 @@ async fn main() {
     );
 
     let auth_state = AuthState {
+        database: database.clone(),
         redis: redis_client.clone(),
         jwt: Arc::new(JwtClient::new(
             jwt_secret,
@@ -58,10 +63,8 @@ async fn main() {
         )),
     };
 
-    let database_url: String = env::var("DATABASE_URL").unwrap();
-
     let app_state = AppState {
-        database: PostgresDb::new(database_url, Duration::new(0, 0).unwrap()).await,
+        database,
         redis: redis_client,
     };
 
