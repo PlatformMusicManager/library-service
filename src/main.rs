@@ -68,17 +68,18 @@ async fn main() {
         redis: redis_client,
     };
 
-    let app = Router::new()
+    let routes = Router::new()
         .route("/me", get(get_me))
         .route("/playlist", post(create_playlist))
         .route("/playlist/{id}", delete(delete_playlist))
         .route("/playlist/track", post(add_track))
         .route("/playlist/track/{id}", delete(remove_track))
         .route("/playlist/track/move", put(move_track))
-        .layer(AuthLayer {
-            state: auth_state.clone(),
-        })
         .with_state(app_state);
+
+    let app = Router::new()
+        .nest("/api/library", routes)
+        .layer(AuthLayer { state: auth_state });
 
     // run our app with hyper, listening globally on port 3000
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
