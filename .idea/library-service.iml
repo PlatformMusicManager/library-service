@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="EMPTY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/libs/cache-lib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/database-lib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/domain-lib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/libs/utils-lib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/libs/cache-lib/target" />
+      <excludeFolder url="file://$MODULE_DIR$/libs/database-lib/target" />
+      <excludeFolder url="file://$MODULE_DIR$/libs/domain-lib/target" />
+      <excludeFolder url="file://$MODULE_DIR$/libs/utils-lib/target" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
