@@ -2,7 +2,7 @@ use crate::AppState;
 use axum::extract::{Path, State};
 use axum::http::StatusCode;
 use axum::{Extension, Json};
-use domain::models::db::user::{TrackPlatform, UserWithPlaylists};
+use domain::models::db::user::{TrackPlatform, UserPlaylistWithTracks, UserWithPlaylists};
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -25,6 +25,21 @@ pub async fn create_playlist(
     let _ = state.redis.remove_user(user.id).await;
 
     Ok(Json(id))
+}
+
+pub async fn get_playlist(
+    State(state): State<AppState>,
+    Path(id): Path<i64>,
+) -> Result<Json<UserPlaylistWithTracks>, StatusCode> {
+    let playlist = state
+        .database
+        .get_user_playlist_with_tracks(id)
+        .await
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+    
+    Ok(Json(
+        playlist.ok_or(StatusCode::NOT_FOUND)?
+    ))
 }
 
 pub async fn delete_playlist(

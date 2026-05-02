@@ -12,16 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b7fea42-2659-4f63-ac15-c71b392185f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/libs/cache-lib" beforeDir="false" afterPath="$PROJECT_DIR$/libs/cache-lib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/cache-lib/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/libs/cache-lib/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/cache-lib/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/libs/cache-lib/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/cache-lib/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/libs/cache-lib/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/database-lib" beforeDir="false" afterPath="$PROJECT_DIR$/libs/database-lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/database-lib/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/libs/database-lib/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/database-lib/src/client.rs" beforeDir="false" afterPath="$PROJECT_DIR$/libs/database-lib/src/client.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/domain-lib" beforeDir="false" afterPath="$PROJECT_DIR$/libs/domain-lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/utils-lib" beforeDir="false" afterPath="$PROJECT_DIR$/libs/utils-lib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libs/utils-lib/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/libs/utils-lib/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/playlist.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/playlist.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="RsBuildProfile:dev" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/libs/domain-lib" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="FP7Uu3GO" />
@@ -50,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "10aaad34",
+    "git-widget-placeholder": "14fe11a8",
     "last_opened_file_path": "/home/david/Projects/music/backend/library-service/libs/cache-lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -111,6 +110,7 @@
       <updated>1774795386764</updated>
       <workItem from="1774795387937" duration="824000" />
       <workItem from="1774982563168" duration="695000" />
+      <workItem from="1777696576738" duration="406000" />
     </task>
     <servers />
   </component>
