@@ -27,16 +27,17 @@ pub async fn create_playlist(
     Ok(Json(id))
 }
 
+#[axum::debug_handler]
 pub async fn get_playlist(
-    State(state): State<AppState>,
     Path(id): Path<i64>,
+    State(state): State<AppState>,
 ) -> Result<Json<UserPlaylistWithTracks>, StatusCode> {
     let playlist = state
         .database
         .get_user_playlist_with_tracks(id)
         .await
         .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
-    
+
     Ok(Json(
         playlist.ok_or(StatusCode::NOT_FOUND)?
     ))
