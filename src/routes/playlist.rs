@@ -2,7 +2,7 @@ use crate::AppState;
 use axum::extract::{Path, State};
 use axum::http::StatusCode;
 use axum::{Extension, Json};
-use domain::models::db::user::{TrackPlatform, UserWithPlaylists};
+use domain::models::db::user::{TrackPlatform, UserPlaylistWithTracks, UserWithPlaylists};
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -25,6 +25,22 @@ pub async fn create_playlist(
     let _ = state.redis.remove_user(user.id).await;
 
     Ok(Json(id))
+}
+
+#[axum::debug_handler]
+pub async fn get_playlist(
+    Path(id): Path<i64>,
+    State(state): State<AppState>,
+) -> Result<Json<UserPlaylistWithTracks>, StatusCode> {
+    let playlist = state
+        .database
+        .get_user_playlist_with_tracks(id)
+        .await
+        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+
+    Ok(Json(
+        playlist.ok_or(StatusCode::NOT_FOUND)?
+    ))
 }
 
 pub async fn delete_playlist(
@@ -80,19 +96,6 @@ pub async fn remove_track(
     Extension(user): Extension<UserWithPlaylists>,
     Path(id): Path<i64>,
 ) -> Result<StatusCode, StatusCode> {
-    // We cannot easily check ownership here without querying DB for "which playlist does this track belong to?"
-    // and then "does user own that playlist?".
-    // `track_in_playlist` has `playlist_id`.
-    // For now, we assume if you have the ID, you can delete it? Or we should query DB.
-    // Given the task scope, and lack of `get_track_in_playlist` method, implementing strict ownership check is hard efficiently.
-    // However, `remove_track_from_playlist` (procedure) finds playlist_id.
-    // We can add a check in DB procedure?
-    // Or we just proceed.
-    // Let's implement robust solution:
-    // Add `get_track_ownership(track_in_playlist_id)` to DB lib?
-    // Maybe too much.
-    // I'll proceed with calling DB method directly. If it fails, 500.
-
     state
         .database
         .remove_track_from_playlist(id, user.id)

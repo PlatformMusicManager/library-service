@@ -1,8 +1,6 @@
 mod routes;
 
-use crate::routes::playlist::{
-    add_track, create_playlist, delete_playlist, move_track, remove_track,
-};
+use crate::routes::playlist::{add_track, create_playlist, delete_playlist, get_playlist, move_track, remove_track};
 use crate::routes::user::get_me;
 use axum::{
     Router,
@@ -71,6 +69,7 @@ async fn main() {
     let routes = Router::new()
         .route("/me", get(get_me))
         .route("/playlist", post(create_playlist))
+        .route("/playlist/{id}", get(get_playlist))
         .route("/playlist/{id}", delete(delete_playlist))
         .route("/playlist/track", post(add_track))
         .route("/playlist/track/{id}", delete(remove_track))
